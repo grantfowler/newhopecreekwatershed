@@ -1,0 +1,67 @@
+---
+interface Props {
+  title: string;
+  description?: string;
+}
+
+const { title, description = "Protecting and preserving the New Hope Creek watershed in Durham, NC" } = Astro.props;
+---
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    
+    <title>{title} | New Hope Creek Watershed</title>
+    <meta name="description" content={description} />
+    
+    <!-- Open Graph -->
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content={`${title} | New Hope Creek Watershed`} />
+    <meta property="og:description" content={description} />
+    
+    <!-- Analytics -->
+    <script data-goatcounter="https://analytics.fowler.haus/count" async src="https://analytics.fowler.haus/count.js"></script>
+  </head>
+  <body class="min-h-screen flex flex-col">
+    <header class="border-b border-creek-200 bg-white/80 backdrop-blur-sm sticky top-0 z-50">
+      <nav class="max-w-5xl mx-auto px-4 py-4">
+        <div class="flex items-center justify-between">
+          <a href="/" class="flex items-center gap-3 group">
+            <span class="text-2xl">🌊</span>
+            <span class="font-serif text-xl text-earth font-semibold group-hover:text-creek-600 transition-colors">
+              New Hope Creek Watershed
+            </span>
+          </a>
+          <div class="flex items-center gap-6 text-sm font-medium">
+            <a href="/about" class="text-earth/70 hover:text-creek-600 transition-colors">About</a>
+            <a href="/news" class="text-earth/70 hover:text-creek-600 transition-colors">News</a>
+            <a href="/contact" class="text-earth/70 hover:text-creek-600 transition-colors">Contact</a>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main class="flex-grow">
+      <slot />
+    </main>
+
+    <footer class="border-t border-creek-200 bg-creek-50 mt-16">
+      <div class="max-w-5xl mx-auto px-4 py-8">
+        <div class="flex flex-col sm:flex-row items-center justify-between gap-4 text-sm text-earth/60">
+          <div class="flex items-center gap-2">
+            <span>🌊</span>
+            <span>New Hope Creek Watershed</span>
+            <span>•</span>
+            <span>Durham, NC</span>
+          </div>
+          <div>
+            <span class="italic">"Protecting our waterways for future generations"</span>
+          </div>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>
